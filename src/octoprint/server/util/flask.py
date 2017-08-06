@@ -482,7 +482,7 @@ def passive_login():
 	else:
 		user = flask.ext.login.current_user
 
-	if user is not None and not user.is_anonymous():
+	if user is not None and not user.is_anonymous:
 		flask.ext.principal.identity_changed.send(flask.current_app._get_current_object(), identity=flask.ext.principal.Identity(user.get_id()))
 		if hasattr(user, "get_session"):
 			flask.session["usersession.id"] = user.get_session()
@@ -1023,7 +1023,7 @@ def admin_validator(request):
 	"""
 
 	user = _get_flask_user_from_request(request)
-	if user is None or not user.is_authenticated() or not user.is_admin():
+	if user is None or not user.is_authenticated or not user.is_admin:
 		raise tornado.web.HTTPError(403)
 
 

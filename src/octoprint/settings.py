@@ -33,7 +33,7 @@ import uuid
 import copy
 import time
 
-from builtins import bytes
+import future_builtins
 
 try:
 	from collections import ChainMap
